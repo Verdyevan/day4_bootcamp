@@ -29,11 +29,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          {% for item in menu %}
+          {% for item in categories %}
           <li class="nav-item">
-            <a class="nav-link" href="#">{{item}}</a>
+            <a class="nav-link">{{ item['title'] }}</a>
           </li>
           {% endfor %}
+        </ul>
       </div>
     </div>
   </nav>
@@ -41,8 +42,14 @@
   <!-- Content section -->
   <section class="py-5">
     <div class="container">
-      <h1>Judul</h1>
-      <p>Isi</p>
+      {% for item in news_list %}
+      <h1>{{ item ['title'] }}</h1>
+      <p>{{ item ['created_at'] }}</p>
+      <img class="card-img-top" src="http://localhost:8000/media/{{ item['image'] }}" alt="Card image cap">
+      <p>{{ item['content'] }}</p>
+      <hr>
+      {% endfor %}
+
     </div>
   </section>
 
